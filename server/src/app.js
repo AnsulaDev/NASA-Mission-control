@@ -12,8 +12,9 @@ app.use(cors({
 app.use(morgan('combined'));// to log the requests
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'public')));
-app.use(planetsRouter);
-app.use(launchesRouter);
+app.use('/planets',planetsRouter);
+
+app.use('/launches',launchesRouter);
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public','index.html'));
 });//since we dont want to load the html at startup instead we want to load the root  route

@@ -6,6 +6,6 @@ const {
 
 const planetsRounter = express.Router();
 
-planetsRounter.get('/planets', httpGetAllPlanets);
+planetsRounter.get('/', httpGetAllPlanets);
 
 module.exports =  planetsRounter;

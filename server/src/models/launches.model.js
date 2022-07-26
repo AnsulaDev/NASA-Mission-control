@@ -13,6 +13,9 @@ const launch = {
 
 launches.set(launch.flightNumber,launch);//flightNumber as key and launch as value
 
+function eixstsLaunchWithId(lauchId){
+    return launches.has(lauchId);
+}
 function getAllLaunches(){
     return Array.from(launches.values());
 }
@@ -27,7 +30,17 @@ function addNewLaunch(launch){
             flightNumber:latestFlightNumber,
         }));
 }
+
+function abortLaunchById(lauchId){
+    const aborted =launches.get(lauchId);
+    aborted.upcoming = false;
+    aborted.success = false;
+    return aborted;
+
+}
 module.exports = {
+    eixstsLaunchWithId,
     getAllLaunches,
     addNewLaunch,
+    abortLaunchById,
 };
